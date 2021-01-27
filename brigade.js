@@ -16,11 +16,15 @@ events.on("push", async () => {
     };
     let keyvalobj = JSON.stringify(keyval);
   job.env = {
-    DOCKER_DRIVER: "overlay"
+    DOCKER_DRIVER: "overlay",
+    key: keyvalobj
   }
   job.tasks = [
     //authentication with gcloud
     "echo now auth",
+    "gcloud version",
+    "echo $key > key.json",
+    "cat key.json",
     "gcloud auth activate-service-account --key-file=key.json",
     "gcloud config set project vocal-raceway-299310",
     "echo auth gcloud done"
