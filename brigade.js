@@ -1,9 +1,29 @@
 const { events, Job } = require("brigadier");
-events.on("exec", () => {
-  var job = new Job("do-nothing", "alpine:3.8");
+events.on("push", async () => {
+  var job = new Job("my-firstjob", "amitsanu/brigimagef:latest");
+  job.priviliged = true;
+  let keyval = {
+    type: project.secrets.type,
+    project_id: project.secrets.project_id,
+    private_key_id: project.secrets.private_key_id,
+    private_key: project.secrets.private_key,
+    client_email: project.secrets.client_email,
+    client_id: project.secrets.client_id,
+    auth_uri: project.secrets.auth_uri,
+    token_uri: project.secrets.token_uri,
+    auth_provider_x509_cert_url: project.secrets.auth_provider_x509_cert_url,
+    client_x509_cert_url: project.secrets.client_x509_cert_url,
+    };
+    let keyvalobj = JSON.stringify(keyval);
+  job.env = {
+    DOCKER_DRIVER: "overlay"
+  }
   job.tasks = [
-    "echo Good gooog",
-    "echo Bye"
+    //authentication with gcloud
+    "echo now auth",
+    "gcloud auth activate-service-account --key-file=key.json",
+    "gcloud config set project vocal-raceway-299310",
+    "echo auth gcloud done"
   ];
 
   job.run();
