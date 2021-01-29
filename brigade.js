@@ -29,6 +29,7 @@ events.on("push", async (e, project) => {
     "gcloud config set project vocal-raceway-299310",
     "echo auth gcloud done",
 
+    
     //build and push docker image to gcr
      "docker version",
      "docker build -t helloworld:latest",
