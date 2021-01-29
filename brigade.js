@@ -31,7 +31,7 @@ events.on("push", async (e, project) => {
 
     //install helm
     "echo helm install start",
-    "cd/src",
+    "cd /src",
     "ls",
     "helm install chart mycharts",
     "echo helm chart installed",
