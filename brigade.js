@@ -29,13 +29,6 @@ events.on("push", async (e, project) => {
     "gcloud config set project vocal-raceway-299310",
     "echo auth gcloud done",
 
-    //install helm
-    "echo helm install start",
-    "cd /src",
-    "ls",
-    "helm install chart mycharts",
-    "echo helm chart installed",
-
     //build and push docker image to gcr
      "docker version",
      "docker build -t docker:dind",
