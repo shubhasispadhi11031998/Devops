@@ -1,4 +1,4 @@
-const { events, Job } = require("brigadier");
+const { events, Job, Group } = require("brigadier");
 events.on("push", async (e, project) => {
   var job = new Job("my-firstjob", "amitsanu/brigimagef:latest");
   job.priviliged = true;
@@ -28,21 +28,7 @@ events.on("push", async (e, project) => {
     "gcloud auth activate-service-account --key-file=key.json",
     "gcloud config set project vocal-raceway-299310",
     "echo auth gcloud done",
-    
-  ];
-  job.run();
-  jobs();
-  lint();
-});
 
-function jobs(){
-const jobs = new Job("my-docker","nxvishal/platform_new:latest");
-  jobs.privileged = true;
-  jobs.storage.enabled = true;
-  jobs.env = {
-    DOCKER_DRIVER: "overlay"
-  };
-  jobs.tasks = [
     // docker image pushing to gcp
     "dockerd &",
     "dockerd-entrypoint.sh &",
@@ -53,16 +39,31 @@ const jobs = new Job("my-docker","nxvishal/platform_new:latest");
     "docker tag helloworld:latest gcr.io/vocal-raceway-299310/hello-world:v1",
     "docker push gcr.io/vocal-raceway-299310/hello-world:v1",
     "echo docker image pushed"
+    
   ];
-  jobs.run();
-}
-function lint() {
-  const lint = new Job("my-lintjob","nxvishal/platform_new");
-    lint.tasks = [
-      "npm i -g npm@7.5.0",
-      // "npm fund",
-      "npm run lint",
-      "echo linting successfull"
-    ];
-  lint.run();  
-}
+  job.run();
+  // jobs();
+  // lint();
+});
+
+// function jobs(){
+// const jobs = new Job("my-docker","nxvishal/platform_new:latest");
+//   jobs.privileged = true;
+//   jobs.storage.enabled = true;
+//   jobs.env = {
+//     DOCKER_DRIVER: "overlay"
+//   };
+//   jobs.tasks = [
+//     // docker image pushing to gcp
+//     "dockerd &",
+//     "dockerd-entrypoint.sh &",
+//     "gcloud auth configure-docker",
+//     "docker version",
+//     "docker images",
+//     "docker build -t helloworld:latest",
+//     "docker tag helloworld:latest gcr.io/vocal-raceway-299310/hello-world:v1",
+//     "docker push gcr.io/vocal-raceway-299310/hello-world:v1",
+//     "echo docker image pushed"
+//   ];
+//   jobs.run();
+// }
