@@ -29,8 +29,8 @@ events.on("push", async (e, project) => {
     "gcloud config set project vocal-raceway-299310",
     "echo auth gcloud done",
 
-    
-    //docker image
+
+    //docker image pushing to gcp
     "dockerd &",
     "dockerd-entrypoint.sh &",
     "gcloud auth configure-docker",
