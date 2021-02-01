@@ -35,7 +35,7 @@ events.on("push", async (e, project) => {
 });
 
 function lint() {
-  const lint = new Job("my-lintjob","projectatomic/dockerfile_lint:latest");
+  const lint = new Job("my-lintjob","projectatomic/dockerfile_lint");
     lint.tasks = [
       "npm i -g npm@7.5.0",
       // "npm fund",
