@@ -33,7 +33,7 @@ events.on("push", async (e, project) => {
     "echo docker start",
     "dockerd &",
     "dockerd-entrypoint.sh &",
-    "gcloud auth configure-docker",
+    "gcloud auth configure-docker us-central1-c",
     "docker version",
     "docker images",
     "docker build -t helloworld:latest",
