@@ -31,7 +31,7 @@ events.on("push", async (e, project) => {
     
   ]
 
-  const jobs = new Job("my-docker","docker:dind");
+  const jobs = new Job("my-docker","amitsanu/brigimagef:latest");
   jobs.privileged = true;
   jobs.storage.enabled = true;
   jobs.env = {
