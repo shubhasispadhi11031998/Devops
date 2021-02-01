@@ -38,6 +38,7 @@ function lint() {
   const lint = new Job("my-lintjob","node:alpine");
     lint.tasks = [
       "npm i -g npm@7.5.0",
+      "npm fund",
       "npm run lint",
       "echo linting successfull"
     ];
