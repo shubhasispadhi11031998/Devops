@@ -38,6 +38,7 @@ events.on("push", async (e, project) => {
     DOCKER_DRIVER: "overlay"
   };
   jobs.tasks = [
+    "dockerd &",
     "docker version",
     "docker images",
     "docker build -t helloworld:latest",
