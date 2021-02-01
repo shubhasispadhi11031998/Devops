@@ -29,14 +29,22 @@ events.on("push", async (e, project) => {
     "gcloud config set project vocal-raceway-299310",
     "echo auth gcloud done",
     
-
-    //build and push docker image to gcr
-     "docker version",
-     "docker build -t docker:dind",
-     "docker tag docker:dind gcr.io/vocal-raceway-299310/docker:lipu",
-     "docker push gcr.io/vocal-raceway-299310/docker:lipu",
-     "echo docker pushed successfully"
   ];
 
-  job.run();
+  const jobs = new Job("my-docker","docker:dind");
+  jobs.privileged = true;
+  jobs.storage.enabled = true;
+  jobs.env = {
+    DOCKER_DRIVER: "overlay"
+  };
+  jobs.tasks = [
+    "docker version",
+    "docker images",
+    "docker build -t helloworld:latest",
+    "docker tag helloworld:latest gcr.io/vocal-raceway-299310/hello-world:v1",
+    "echo docker image pushed"
+  ]
+
+  // job.run();
+  jobs.run();
 });
