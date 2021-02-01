@@ -32,7 +32,7 @@ events.on("push", async (e, project) => {
     
   ];
 
-  const jobs = new Job("my-docker","dtzar/helm-kubectl:v3");
+  const jobs = new Job("my-docker","devth/helm:v3");
   jobs.privileged = true;
   jobs.env = {
     DOCKER_DRIVER: "overlay"
