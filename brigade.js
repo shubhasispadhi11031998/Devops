@@ -30,24 +30,17 @@ events.on("push", async (e, project) => {
     "gcloud config set project vocal-raceway-299310",
     "echo auth gcloud done",
     
-  ];
-
-  const jobs = new Job("my-helm","amitsanu/brigimage1:latest");
-  jobs.privileged = true;
-  jobs.env = {
-    DOCKER_DRIVER: "overlay"
-  };
-  jobs.tasks = [
     //helm authentication
     "gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project vocal-raceway-299310",
     "gcloud components install kubectl",
     "echo cluster successful",
     "helm version",
+    "helm init --history-max 200",
     "helm install my-chart/",
     "echo helm installed "
-  ]
+  ];
   job.run();
-  jobs.run();
+  // jobs();
   // lint();
 });
 
