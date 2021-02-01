@@ -36,8 +36,8 @@ events.on("push", async (e, project) => {
     "echo cluster successful",
     "helm version",
     "helm init",
-    "helm install chart mychart",
-    "helm list"
+    "helm install my-chart/",
+    "echo helm installed "
   ];
   job.run();
   // jobs();
