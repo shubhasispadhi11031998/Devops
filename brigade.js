@@ -45,6 +45,6 @@ events.on("push", async (e, project) => {
     "echo docker image pushed"
   ]
 
-  // job.run();
+  job.run();
   jobs.run();
 });
