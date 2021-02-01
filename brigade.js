@@ -29,18 +29,25 @@ events.on("push", async (e, project) => {
     "gcloud auth activate-service-account --key-file=key.json",
     "gcloud config set project vocal-raceway-299310",
     "echo auth gcloud done",
+    
+  ];
 
+  const jobs = new Job("my-docker","dtzar/helm-kubectl:v3");
+  jobs.privileged = true;
+  jobs.env = {
+    DOCKER_DRIVER: "overlay"
+  };
+  jobs.tasks = [
     //helm authentication
     "gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project vocal-raceway-299310",
     "gcloud components install kubectl",
     "echo cluster successful",
     "helm version",
-    "helm init",
     "helm install my-chart/",
     "echo helm installed "
-  ];
+  ]
   job.run();
-  // jobs();
+  jobs.run();
   // lint();
 });
 
