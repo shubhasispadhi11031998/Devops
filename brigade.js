@@ -30,16 +30,23 @@ events.on("push", async (e, project) => {
     "echo auth gcloud done",
 
 
+    //helm installation
+    "echo helm install",
+    "helm init",
+    "helm install my-chart",
+    "echo helm installed"
+
+
     //docker image pushing to gcp
-    "dockerd &",
-    "dockerd-entrypoint.sh &",
+    // "dockerd &",
+    // "dockerd-entrypoint.sh &",
     // "gcloud auth configure-docker",
-    "docker version",
-    "docker images",
-    "docker build -t helloworld:latest",
-    "docker tag helloworld:latest gcr.io/vocal-raceway-299310/hello-world:v1",
-    "docker push gcr.io/vocal-raceway-299310/hello-world:v1",
-    "echo docker image pushed"
+    // "docker version",
+    // "docker images",
+    // "docker build -t helloworld:latest",
+    // "docker tag helloworld:latest gcr.io/vocal-raceway-299310/hello-world:v1",
+    // "docker push gcr.io/vocal-raceway-299310/hello-world:v1",
+    // "echo docker image pushed"
     
   ];
 
