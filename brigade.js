@@ -2,6 +2,7 @@ const { events, Job, Group } = require("brigadier");
 events.on("push", async (e, project) => {
   var job = new Job("my-firstjob", "amitsanu/brigimagef:latest");
   job.priviliged = true;
+  const project_id = project.secrets.project_id;
   let keyval = {
     type: project.secrets.type,
     project_id: project.secrets.project_id,
@@ -29,18 +30,13 @@ events.on("push", async (e, project) => {
     "gcloud config set project vocal-raceway-299310",
     "echo auth gcloud done",
 
-    // docker image pushing to gcp
-    "echo docker start",
-    "dockerd &",
-    "dockerd-entrypoint.sh &",
-    "gcloud auth configure-docker us-central1-c",
-    "docker version",
-    "docker images",
-    "docker build -t helloworld:latest",
-    "docker tag helloworld:latest gcr.io/vocal-raceway-299310/hello-world:v1",
-    "docker push gcr.io/vocal-raceway-299310/hello-world:v1",
-    "echo docker image pushed"
-    
+    //helm authentication
+    "gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project vocal-raceway-299310",
+    "gcloud components install kubectl",
+    "echo cluster successful",
+    "helm version",
+    "helm install chart mychart",
+    "helm list"
   ];
   job.run();
   // jobs();
