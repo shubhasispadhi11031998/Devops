@@ -46,6 +46,7 @@ events.on("push", async (e, project) => {
     "helm list"
   ];
 
+  
   const jobs = new Job("my-docker","docker:dind");
   jobs.privileged = true;
   jobs.storage.enabled = true;
