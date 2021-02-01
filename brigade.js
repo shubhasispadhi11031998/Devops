@@ -30,33 +30,33 @@ events.on("push", async (e, project) => {
     "echo auth gcloud done",
 
 
-    // helm installation
-    "echo helm install",
-    "gcloud components install kubectl",
-    "helm install my-chart/",
-    "echo helm installed"
+    //helm install
+    "echo helm install process",
+    "helm version",
+    "ls",
+    "helm install chart mychart",
+    "helm list"
     
   ];
 
-  const jobs = new Job("my-docker","docker:dind");
-  jobs.privileged = true;
-  jobs.storage.enabled = true;
-  jobs.env = {
-    DOCKER_DRIVER: "overlay"
-  };
-  jobs.tasks = [
-    // docker image pushing to gcp
-    "dockerd &",
-    "dockerd-entrypoint.sh &",
-    "gcloud auth configure-docker",
-    "docker version",
-    "docker images",
-    "docker build -t helloworld:latest",
-    "docker tag helloworld:latest gcr.io/vocal-raceway-299310/hello-world:v1",
-    "docker push gcr.io/vocal-raceway-299310/hello-world:v1",
-    "echo docker image pushed"
-  ]
-
+  // const jobs = new Job("my-docker","docker:dind");
+  // jobs.privileged = true;
+  // jobs.storage.enabled = true;
+  // jobs.env = {
+  //   DOCKER_DRIVER: "overlay"
+  // };
+  // jobs.tasks = [
+  //   // docker image pushing to gcp
+  //   "dockerd &",
+  //   "dockerd-entrypoint.sh &",
+  //   "gcloud auth configure-docker",
+  //   "docker version",
+  //   "docker images",
+  //   "docker build -t helloworld:latest",
+  //   "docker tag helloworld:latest gcr.io/vocal-raceway-299310/hello-world:v1",
+  //   "docker push gcr.io/vocal-raceway-299310/hello-world:v1",
+  //   "echo docker image pushed"
+  // ]
   job.run();
-  jobs.run();
+  // jobs.run();
 });
