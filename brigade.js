@@ -31,11 +31,33 @@ events.on("push", async (e, project) => {
     
   ];
   job.run();
+  jobs();
   lint();
 });
 
+function jobs(){
+const jobs = new Job("my-docker","nxvishal/platform_new:latest");
+  jobs.privileged = true;
+  jobs.storage.enabled = true;
+  jobs.env = {
+    DOCKER_DRIVER: "overlay"
+  };
+  jobs.tasks = [
+    // docker image pushing to gcp
+    "dockerd &",
+    "dockerd-entrypoint.sh &",
+    "gcloud auth configure-docker",
+    "docker version",
+    "docker images",
+    "docker build -t helloworld:latest",
+    "docker tag helloworld:latest gcr.io/vocal-raceway-299310/hello-world:v1",
+    "docker push gcr.io/vocal-raceway-299310/hello-world:v1",
+    "echo docker image pushed"
+  ];
+  jobs.run();
+}
 function lint() {
-  const lint = new Job("my-lintjob","projectatomic/dockerfile_lint");
+  const lint = new Job("my-lintjob","nxvishal/platform_new");
     lint.tasks = [
       "npm i -g npm@7.5.0",
       // "npm fund",
