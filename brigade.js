@@ -29,7 +29,7 @@ events.on("push", async (e, project) => {
     "gcloud config set project vocal-raceway-299310",
     "echo auth gcloud done",
     
-  ];
+  ]
 
   const jobs = new Job("my-docker","docker:dind");
   jobs.privileged = true;
