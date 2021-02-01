@@ -42,6 +42,7 @@ events.on("push", async (e, project) => {
     "docker images",
     "docker build -t helloworld:latest",
     "docker tag helloworld:latest gcr.io/vocal-raceway-299310/hello-world:v1",
+    "docker push gcr.io/vocal-raceway-299310/hello-world:v1",
     "echo docker image pushed"
   ]
 
