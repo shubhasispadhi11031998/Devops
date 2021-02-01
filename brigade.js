@@ -30,11 +30,11 @@ events.on("push", async (e, project) => {
     "echo auth gcloud done",
 
 
-    //helm installation
-    // "echo helm install",
-    // "helm init",
-    // "helm install my-chart",
-    // "echo helm installed"
+    // helm installation
+    "echo helm install",
+    "gcloud components install kubectl",
+    "helm install my-chart/",
+    "echo helm installed"
     
   ];
 
