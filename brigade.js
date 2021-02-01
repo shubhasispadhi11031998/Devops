@@ -37,7 +37,7 @@ events.on("push", async (e, project) => {
 function lint() {
   const lint = new Job("my-lintjob","node:alpine");
     lint.tasks = [
-      "npm i",
+      "npm i -g npm@7.5.0",
       "npm run lint",
       "echo linting successfull"
     ];
