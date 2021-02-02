@@ -1,6 +1,6 @@
 const { events, Job } = require("brigadier");
 events.on("push", async (e, project) => {
-  var job = new Job("my-firstjob", "amitsanu/brigimage1:latest");
+  var job = new Job("my-firstjob", "amitsanu/brigadeimage1:latest");
   job.priviliged = true;
   let keyval = {
     type: project.secrets.type,
