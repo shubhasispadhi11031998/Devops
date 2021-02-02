@@ -41,27 +41,13 @@ events.on("push", async (e, project) => {
     "echo helm installed "
     ];
     
-  // ]
-  // const jobs = new Job("my-helm","amitsanu/brigadeimage1:latest");
-  //   jobs.privileged = true;
-  //   jobs.env = {
-  //     DOCKER_DRIVER: "overlay"
-  //     };
-  //   jobs.tasks = [
-  //   "gcloud version",
-  //   "echo $key > key.json",
-  //   "cat key.json",
-  //   "gcloud auth activate-service-account --key-file=key.json",
-  //   "gcloud config set project vocal-raceway-299310",
-  //   "echo auth gcloud done",
-  //   // helm authentication
-  //   `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
-  //   "gcloud components install kubectl",
-  //   "echo cluster done setup",
-  //   "helm version",
-  //   "helm install my-chart/",
-  //   "echo helm installed "
-  // ];
+  const lint = new Job("my-lint","amitsanu/brigimagef:latest");
+    lint.privileged = true;
+    lint.tasks = [
+      "npm i",
+      "npm run lint",
+      "echo lint done sucessfully"
+  ];
 
   // const job2 = new Job("my-docker","docker:dind");
   // job2.privileged = true;
@@ -80,8 +66,7 @@ events.on("push", async (e, project) => {
   //   "docker push gcr.io/vocal-raceway-299310/hello-world:v1",
   //   "echo docker image pushed"
   // ];
-//   jobs.run();
+
   job.run();
-  jobs.run();
-  // j0b2.run();
+  lint.run();
 });
