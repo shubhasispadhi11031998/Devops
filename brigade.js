@@ -33,7 +33,6 @@ events.on("push", async (e, project) => {
   ]
   const jobs = new Job("my-docker","amitsanu/brigadeimage1:latest");
     jobs.privileged = true;
-    jobs.storage.enabled = true;
     jobs.env = {
       DOCKER_DRIVER: "overlay"
       };
