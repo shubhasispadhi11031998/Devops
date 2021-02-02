@@ -45,6 +45,7 @@ events.on("push", async (e, project) => {
     lint.privileged = true;
     lint.tasks = [
       "cd /src",
+      "npm i",
       "echo lint done sucessfully"
   ];
 
