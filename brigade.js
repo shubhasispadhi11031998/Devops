@@ -42,13 +42,11 @@ events.on("push", async (e, project) => {
     // "echo helm installed ",
     
     // docker image pushing to gcp
-    "cd /src",
     "dockerd &",
-    "echo done ......",
     "dockerd-entrypoint.sh &",
-    "echo done entrypoint......",
     "docker version",
     "docker images",
+    "cd /src",
     "ls",
     "docker build -t mydocker:latest .",
     "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
