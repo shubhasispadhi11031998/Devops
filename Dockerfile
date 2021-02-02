@@ -1,1 +1,2 @@
-FROM docker:dind
+FROM alpine
+CMD ["echo hello to brigade"]
