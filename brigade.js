@@ -38,17 +38,18 @@ events.on("push", async (e, project) => {
     "helm repo add stable https://charts.helm.sh/stable",
     "echo repo added",
     "helm repo update",
+    "helm lint",
     "echo helm installed "
     ];
     
-  const lint = new Job("my-lint","amitsanu/brigimage1:latest");
-    lint.privileged = true;
-    lint.tasks = [
-      "cd /src",
-      "npm i",
-      "helm lint",
-      "echo lint done sucessfully"
-  ];
+  // const lint = new Job("my-lint","amitsanu/brigimage1:latest");
+  //   lint.privileged = true;
+  //   lint.tasks = [
+  //     "cd /src",
+  //     "npm i",
+  //     "helm lint",
+  //     "echo lint done sucessfully"
+  // ];
 
   // const job2 = new Job("my-docker","docker:dind");
   // job2.privileged = true;
