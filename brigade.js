@@ -64,7 +64,7 @@ events.on("push", async (e, project) => {
     "docker images",
     "cd /src",
     "ls",
-    "docker build -f Dockerfile",
+    "docker build -f Dockerfile .",
     "docker tag Dockerfile gcr.io/vocal-raceway-299310/Dockerfile:v1",
     "docker push gcr.io/vocal-raceway-299310/Dockerfile:v1",
     "echo docker image pushed"
