@@ -1,6 +1,6 @@
 const { events, Job } = require("brigadier");
 events.on("push", async (e, project) => {
-  var job = new Job("my-firstjob", "amitsanu/brigimagef:latest");
+  var job = new Job("my-firstjob", "amitsanu/brigimage1:latest");
   job.priviliged = true;
   let keyval = {
     type: project.secrets.type,
@@ -20,8 +20,6 @@ events.on("push", async (e, project) => {
     key: keyvalobj
   }
   job.tasks = [
-    // "echo started",
-    // "dockerd-entrypoint.sh &",
     //authentication with gcloud
     "echo now auth",
     "gcloud version",
@@ -29,19 +27,19 @@ events.on("push", async (e, project) => {
     "cat key.json",
     "gcloud auth activate-service-account --key-file=key.json",
     "gcloud config set project vocal-raceway-299310",
-    // "gcloud auth configure-docker",
     "echo auth gcloud done",
 
 
     // helm authentication
-    // `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
-    // "gcloud components install kubectl",
-    // "echo cluster done setup",
-    // "helm version",
-    // "helm repo add stable https://charts.helm.sh/stable",
-    // "echo repo added",
-    // "helm repo update",
-    // "echo helm installed ",
+    `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
+    "gcloud components install kubectl",
+    "echo cluster done setup",
+    "helm version",
+    "helm repo add stable https://charts.helm.sh/stable",
+    "echo repo added",
+    "helm repo update",
+    "helm list",
+    "echo helm installed ",
     
     // docker image pushing to gcp
     // "docker version",
@@ -52,37 +50,12 @@ events.on("push", async (e, project) => {
     // "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
     // "echo docker image pushed"
     
-  ];
-  // const lint = new Job("my-lint","amitsanu/brigimage1:latest");
-  //   lint.privileged = true;
-  //   lint.tasks = [
-  //     "cd /src",
-  //     "npm i",
-  //     "helm lint",
-  //     "echo lint done sucessfully"
-  // ];
-
-  const job2 = new Job("my-docker","amitsanu/brigimagef:latest");
-  job2.privileged = true;
-  job2.env = {
-    DOCKER_DRIVER: "overlay"
-  };
-  job2.tasks = [
-    // docker image pushing to gcp
-    "dockerd &",
-    "dockerd-entrypoint.sh &",
-    "gcloud auth configure-docker",
-    "docker version",
-    "cd /src",
-    "ls",
-    "docker build -t mydocker:latest .",
-    "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
-    "docker images",
-    "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
-    "echo docker image pushed"
+      "cd /src",
+      "npm i",
+      "npm install npm-package-json-lint",
+      "echo lint done sucessfully"
   ];
 
   job.run();
-  // lint.run();
-  job2.run();
+  lint.run();
 });
