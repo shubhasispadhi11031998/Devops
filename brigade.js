@@ -49,11 +49,6 @@ events.on("push", async (e, project) => {
     // "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
     // "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
     // "echo docker image pushed"
-    
-      // "cd /src",
-      // "npm i",
-      // "npm install npm-package-json-lint",
-      // "echo lint done sucessfully"
   ];
 
   job.run();
