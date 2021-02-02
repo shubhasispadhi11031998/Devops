@@ -35,16 +35,14 @@ events.on("push", async (e, project) => {
     "gcloud components install kubectl",
     "echo cluster successful",
     "helm version",
-    "helm init --history-max 200",
+    "helm init",
     "helm install my-chart/",
     "echo helm installed "
   ];
   job.run();
   // jobs();
-  // lint();
 });
 
-// function jobs(){
 // const jobs = new Job("my-docker","nxvishal/platform_new:latest");
 //   jobs.privileged = true;
 //   jobs.storage.enabled = true;
