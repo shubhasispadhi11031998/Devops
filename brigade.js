@@ -35,8 +35,7 @@ events.on("push", async (e, project) => {
     "gcloud components install kubectl",
     "echo cluster done setup",
     "helm version",
-    "helm repo update",
-    "helm install chart mycharts",
+    "helm install happy-panda bitnami/wordpress",
     "echo helm installed "
     ];
     
