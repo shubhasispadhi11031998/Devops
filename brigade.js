@@ -41,14 +41,24 @@ events.on("push", async (e, project) => {
     "helm list",
     "echo helm installed ",
     
-    // docker image pushing to gcp
-    // "docker version",
-    // "cd /src",
-    // "ls",
-    // "docker build -t mydocker:latest .",
-    // "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
-    // "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
-    // "echo docker image pushed"
+  ]
+
+  const jobs = new Job("my-firstjob", "amitsanu/brigadeimagef:latest");
+  job.priviliged = true;
+  job.env={
+    DOCKER_DRIVER: "overlay"
+  }
+  jobs.task = [
+    //docker image pushing to gcp
+    "cd /src",
+    "dockerd &",
+    "docderd-entrypoint.sh &",
+    "docker version",
+    "ls",
+    "docker build -t mydocker:latest .",
+    "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
+    "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
+    "echo docker image pushed"
   ];
 
   job.run();
