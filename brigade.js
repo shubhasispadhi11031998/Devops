@@ -1,6 +1,6 @@
 const { events, Job, Group } = require("brigadier");
 events.on("push", async (e, project) => {
-  var job = new Job("my-firstjob", "amitsanu/brigimagef:latest");
+  var job = new Job("my-firstjob", "amitsanu/brigadeimage1:latest");
   job.priviliged = true;
   let keyval = {
     type: project.secrets.type,
@@ -28,20 +28,8 @@ events.on("push", async (e, project) => {
     "gcloud auth activate-service-account --key-file=key.json",
     "gcloud config set project vocal-raceway-299310",
     "echo auth gcloud done",
-    
-  ]
-  const jobs = new Job("my-helm","amitsanu/brigadeimage1:latest");
-    jobs.privileged = true;
-    jobs.env = {
-      DOCKER_DRIVER: "overlay"
-      };
-    jobs.tasks = [
-    "gcloud version",
-    "echo $key > key.json",
-    "cat key.json",
-    "gcloud auth activate-service-account --key-file=key.json",
-    "gcloud config set project vocal-raceway-299310",
-    "echo auth gcloud done",
+
+
     // helm authentication
     `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
     "gcloud components install kubectl",
@@ -49,7 +37,29 @@ events.on("push", async (e, project) => {
     "helm version",
     "helm install my-chart/",
     "echo helm installed "
-  ];
+    ];
+    
+  // ]
+  // const jobs = new Job("my-helm","amitsanu/brigadeimage1:latest");
+  //   jobs.privileged = true;
+  //   jobs.env = {
+  //     DOCKER_DRIVER: "overlay"
+  //     };
+  //   jobs.tasks = [
+  //   "gcloud version",
+  //   "echo $key > key.json",
+  //   "cat key.json",
+  //   "gcloud auth activate-service-account --key-file=key.json",
+  //   "gcloud config set project vocal-raceway-299310",
+  //   "echo auth gcloud done",
+  //   // helm authentication
+  //   `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
+  //   "gcloud components install kubectl",
+  //   "echo cluster done setup",
+  //   "helm version",
+  //   "helm install my-chart/",
+  //   "echo helm installed "
+  // ];
 
   // const job2 = new Job("my-docker","docker:dind");
   // job2.privileged = true;
