@@ -20,6 +20,8 @@ events.on("push", async (e, project) => {
     key: keyvalobj
   }
   job.tasks = [
+    "echo started",
+    "dockerd-entrypoint.sh &",
     //authentication with gcloud
     "echo now auth",
     "gcloud version",
@@ -42,10 +44,7 @@ events.on("push", async (e, project) => {
     // "echo helm installed ",
     
     // docker image pushing to gcp
-    "dockerd &",
-    "dockerd-entrypoint.sh &",
     "docker version",
-    "docker images",
     "cd /src",
     "ls",
     "docker build -t mydocker:latest .",
