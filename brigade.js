@@ -44,8 +44,8 @@ events.on("push", async (e, project) => {
   ]
 
   const jobs = new Job("my-firstjob", "amitsanu/brigadeimagef:latest");
-  job.priviliged = true;
-  job.env={
+  jobs.priviliged = true;
+  jobs.env={
     DOCKER_DRIVER: "overlay"
   }
   jobs.task = [
@@ -62,5 +62,5 @@ events.on("push", async (e, project) => {
   ];
 
   job.run();
-  // lint.run();
+  jobs.run();
 });
