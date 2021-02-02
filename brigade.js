@@ -38,7 +38,7 @@ events.on("push", async (e, project) => {
       };
     jobs.tasks = [
     // helm authentication
-    "gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project vocal-raceway-299310",
+    `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
     "gcloud components install kubectl",
     "echo cluster successful",
     "helm version",
@@ -46,46 +46,25 @@ events.on("push", async (e, project) => {
     "echo helm installed "
   ];
 
-  const job2 = new Job("my-docker","amitsanu/brigadeimage1:latest");
-  job2.privileged = true;
-  job2.env = {
-    DOCKER_DRIVER: "overlay"
-  };
-  job2.tasks = [
-    // docker image pushing to gcp
-    "dockerd &",
-    "dockerd-entrypoint.sh &",
-    "gcloud auth configure-docker",
-    "docker version",
-    "docker images",
-    "docker build -t helloworld:latest",
-    "docker tag helloworld:latest gcr.io/vocal-raceway-299310/hello-world:v1",
-    "docker push gcr.io/vocal-raceway-299310/hello-world:v1",
-    "echo docker image pushed"
-  ];
+  // const job2 = new Job("my-docker","amitsanu/brigadeimage1:latest");
+  // job2.privileged = true;
+  // job2.env = {
+  //   DOCKER_DRIVER: "overlay"
+  // };
+  // job2.tasks = [
+  //   // docker image pushing to gcp
+  //   "dockerd &",
+  //   "dockerd-entrypoint.sh &",
+  //   "gcloud auth configure-docker",
+  //   "docker version",
+  //   "docker images",
+  //   "docker build -t helloworld:latest",
+  //   "docker tag helloworld:latest gcr.io/vocal-raceway-299310/hello-world:v1",
+  //   "docker push gcr.io/vocal-raceway-299310/hello-world:v1",
+  //   "echo docker image pushed"
+  // ];
 //   jobs.run();
   job.run();
   jobs.run();
-  j0b2.run();
+  // j0b2.run();
 });
-
-// const jobs = new Job("my-docker","nxvishal/platform_new:latest");
-//   jobs.privileged = true;
-//   jobs.storage.enabled = true;
-//   jobs.env = {
-//     DOCKER_DRIVER: "overlay"
-//   };
-//   jobs.tasks = [
-//     // docker image pushing to gcp
-//     "dockerd &",
-//     "dockerd-entrypoint.sh &",
-//     "gcloud auth configure-docker",
-//     "docker version",
-//     "docker images",
-//     "docker build -t helloworld:latest",
-//     "docker tag helloworld:latest gcr.io/vocal-raceway-299310/hello-world:v1",
-//     "docker push gcr.io/vocal-raceway-299310/hello-world:v1",
-//     "echo docker image pushed"
-//   ];
-//   jobs.run();
-// }
