@@ -42,11 +42,6 @@ events.on("push", async (e, project) => {
     // "echo helm installed ",
     
     // docker image pushing to gcp
-    "dockerd &",
-    "echo done ......",
-    "dockerd-entrypoint.sh &",
-    "echo done ......",
-    "echo done ......",
     "docker version",
     "docker images",
     "cd /src",
