@@ -27,6 +27,7 @@ events.on("push", async (e, project) => {
     "cat key.json",
     "gcloud auth activate-service-account --key-file=key.json",
     "gcloud config set project vocal-raceway-299310",
+    "gcloud auth configure-docker",
     "echo auth gcloud done",
 
 
@@ -45,7 +46,6 @@ events.on("push", async (e, project) => {
     "echo done ......",
     "dockerd-entrypoint.sh &",
     "echo done ......",
-    "gcloud auth configure-docker",
     "echo done ......",
     "docker version",
     "docker images",
