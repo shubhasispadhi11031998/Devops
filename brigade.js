@@ -35,6 +35,7 @@ events.on("push", async (e, project) => {
     "gcloud components install kubectl",
     "echo cluster done setup",
     "helm version",
+    "helm repo add stable https://charts.helm.sh/stable",
     "helm install chart mycharts",
     "echo helm installed "
     ];
