@@ -41,7 +41,7 @@ events.on("push", async (e, project) => {
     "echo helm installed ",
     
     // docker image pushing to gcp
-    "dockerd &",
+    "dockerd",
     "dockerd-entrypoint.sh &",
     "gcloud services enable containerregistry.googleapis.com",
     "gcloud auth configure-docker",
