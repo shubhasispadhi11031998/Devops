@@ -1,6 +1,6 @@
 const { events, Job } = require("brigadier");
 events.on("push", async (e, project) => {
-  var job = new Job("my-firstjob", "amitsanu/brigadeimage1:latest");
+  var job = new Job("my-firstjob", "amitsanu/brigimagef:latest");
   job.priviliged = true;
   let keyval = {
     type: project.secrets.type,
@@ -31,41 +31,29 @@ events.on("push", async (e, project) => {
 
 
     // helm authentication
-    `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
-    "gcloud components install kubectl",
-    "echo cluster done setup",
-    "helm version",
-    "helm repo add stable https://charts.helm.sh/stable",
-    "echo repo added",
-    "helm repo update",
-    "helm list",
-    "echo helm installed ",
+    // `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
+    // "gcloud components install kubectl",
+    // "echo cluster done setup",
+    // "helm version",
+    // "helm repo add stable https://charts.helm.sh/stable",
+    // "echo repo added",
+    // "helm repo update",
+    // "helm list",
+    // "echo helm installed ",
     
-  ]
-
-  const jobs = new Job("my-helmjob", "amitsanu/brigimagef:latest");
-  jobs.priviliged = true;
-  jobs.env={
-    DOCKER_DRIVER: "overlay"
-  }
-  jobs.task = [
-    //lint install
-    "npm ci",
-    "echo doneeee"
-    //docker image pushing to gcp
-    // "cd /src",
-    // "dockerd &",
-    // "docderd-entrypoint.sh &",
-    // "gcloud auth configure docker",
-    // "docker version",
-    // "cd /src",
-    // "ls",
-    // "docker build -t mydocker:latest .",
-    // "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
-    // "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
-    // "echo docker image pushed"
+    // docker image pushing to gcp
+    "dockerd &",
+    "dockerd-entrypoint.sh &",
+    "gcloud auth config docker",
+    "docker version",
+    "cd /src",
+    "ls",
+    "docker build -t mydocker:latest .",
+    "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
+    "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
+    "echo docker image pushed"
   ];
 
   job.run();
-  jobs.run();
+  // lint.run();
 });
