@@ -43,14 +43,15 @@ events.on("push", async (e, project) => {
     
   ]
 
-  const jobs = new Job("my-job", "amitsanu/brigimagef:latest");
+  const jobs = new Job("my-helmjob", "amitsanu/brigimagef:latest");
   jobs.priviliged = true;
   jobs.env={
     DOCKER_DRIVER: "overlay"
   }
   jobs.task = [
     //lint install
-    "npm ci"
+    "npm ci",
+    "echo doneeee"
     //docker image pushing to gcp
     // "cd /src",
     // "dockerd &",
