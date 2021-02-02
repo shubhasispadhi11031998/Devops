@@ -36,7 +36,7 @@ events.on("push", async (e, project) => {
     "echo cluster done setup",
     "helm version",
     "cd /src",
-    "helm install chart mychart",
+    "helm install chart mycharts",
     "echo helm installed "
     ];
     
