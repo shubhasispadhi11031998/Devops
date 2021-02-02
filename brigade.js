@@ -36,6 +36,8 @@ events.on("push", async (e, project) => {
     "echo cluster done setup",
     "helm version",
     "helm repo add stable https://charts.helm.sh/stable",
+    "echo repo added",
+    "helm repo update",
     "helm install chart mycharts",
     "echo helm installed "
     ];
