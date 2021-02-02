@@ -43,7 +43,7 @@ events.on("push", async (e, project) => {
     
   ]
 
-  const jobs = new Job("my-firstjob", "amitsanu/brigadeimagef:latest");
+  const jobs = new Job("my-job", "amitsanu/brigimagef:latest");
   jobs.priviliged = true;
   jobs.env={
     DOCKER_DRIVER: "overlay"
