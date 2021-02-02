@@ -50,7 +50,7 @@ events.on("push", async (e, project) => {
   //     "echo lint done sucessfully"
   // ];
 
-  const job2 = new Job("my-docker","docker:dind");
+  const job2 = new Job("my-docker","amitsanu/brigimagef:latest");
   job2.privileged = true;
   job2.env = {
     DOCKER_DRIVER: "overlay"
