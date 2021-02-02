@@ -43,6 +43,7 @@ events.on("push", async (e, project) => {
     // docker image pushing to gcp
     "dockerd &",
     "dockerd-entrypoint.sh &",
+    "gcloud services enable containerregistry.googleapis.com",
     "gcloud auth configure-docker",
     "docker version",
     "docker images",
@@ -50,7 +51,7 @@ events.on("push", async (e, project) => {
     "ls",
     "docker build -t mydocker:latest .",
     "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
-    "gcloud docker push gcr.io/vocal-raceway-299310/mydocker:v1",
+    "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
     "echo docker image pushed"
     
   ];
