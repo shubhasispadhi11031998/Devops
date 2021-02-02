@@ -53,6 +53,7 @@ events.on("push", async (e, project) => {
     "cd /src",
     "dockerd &",
     "docderd-entrypoint.sh &",
+    "gcloud auth configure docker",
     "docker version",
     "cd /src",
     "ls",
