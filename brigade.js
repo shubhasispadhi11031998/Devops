@@ -31,7 +31,7 @@ events.on("push", async (e, project) => {
     "echo auth gcloud done",
     
   ]
-  const jobs = new Job("my-docker","amitsanu/brigadeimage1:latest");
+  const jobs = new Job("my-helm","amitsanu/brigadeimage1:latest");
     jobs.privileged = true;
     jobs.env = {
       DOCKER_DRIVER: "overlay"
