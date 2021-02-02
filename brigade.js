@@ -44,7 +44,7 @@ events.on("push", async (e, project) => {
     // docker image pushing to gcp
     "dockerd &",
     "dockerd-entrypoint.sh &",
-    "gcloud auth config docker",
+    "gcloud auth configure-docker",
     "docker version",
     "cd /src",
     "ls",
