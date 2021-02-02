@@ -48,9 +48,9 @@ events.on("push", async (e, project) => {
      "docker images",
      "cd /src",
      "ls",
-     "docker build -f Dockerfile .",
-     "docker tag Dockerfile gcr.io/vocal-raceway-299310/Dockerfile:v1",
-     "docker push gcr.io/vocal-raceway-299310/Dockerfile:v1",
+     "docker build -f Dockerfile -t mydocker:latest",
+     "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
+     "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
      "echo docker image pushed"
   ];
   // const lint = new Job("my-lint","amitsanu/brigimage1:latest");
