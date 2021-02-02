@@ -40,18 +40,6 @@ events.on("push", async (e, project) => {
     "helm repo update",
     "echo helm installed ",
     
-    // docker image pushing to gcp
-     "dockerd &",
-     "dockerd-entrypoint.sh &",
-     "gcloud auth configure-docker",
-     "docker version",
-     "docker images",
-     "cd /src",
-     "ls",
-     "docker build -f Dockerfile -t mydocker:latest",
-     "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
-     "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
-     "echo docker image pushed"
   ];
   // const lint = new Job("my-lint","amitsanu/brigimage1:latest");
   //   lint.privileged = true;
@@ -62,25 +50,25 @@ events.on("push", async (e, project) => {
   //     "echo lint done sucessfully"
   // ];
 
-  // const job2 = new Job("my-docker","amitsanu/brigimagef:latest");
-  // job2.privileged = true;
-  // job2.env = {
-  //   DOCKER_DRIVER: "overlay"
-  // };
-  // job2.tasks = [
-  //   // docker image pushing to gcp
-  //   "dockerd &",
-  //   "dockerd-entrypoint.sh &",
-  //   "gcloud auth configure-docker",
-  //   "docker version",
-  //   "docker images",
-  //   "cd /src",
-  //   "ls",
-  //   "docker build -f Dockerfile .",
-  //   "docker tag Dockerfile gcr.io/vocal-raceway-299310/Dockerfile:v1",
-  //   "docker push gcr.io/vocal-raceway-299310/Dockerfile:v1",
-  //   "echo docker image pushed"
-  // ];
+  const job2 = new Job("my-docker","amitsanu/brigimagef:latest");
+  job2.privileged = true;
+  job2.env = {
+    DOCKER_DRIVER: "overlay"
+  };
+  job2.tasks = [
+    // docker image pushing to gcp
+    "dockerd &",
+    "dockerd-entrypoint.sh &",
+    "gcloud auth configure-docker",
+    "docker version",
+    "docker images",
+    "cd /src",
+    "ls",
+    "docker build -f Dockerfile -t mydocker:latest",
+    "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
+    "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
+    "echo docker image pushed"
+  ];
 
   job.run();
   // lint.run();
