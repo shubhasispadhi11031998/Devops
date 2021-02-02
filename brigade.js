@@ -54,6 +54,7 @@ events.on("push", async (e, project) => {
     "dockerd &",
     "docderd-entrypoint.sh &",
     "docker version",
+    "cd /src",
     "ls",
     "docker build -t mydocker:latest .",
     "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
