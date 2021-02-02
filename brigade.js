@@ -45,8 +45,28 @@ events.on("push", async (e, project) => {
     "helm install my-chart/",
     "echo helm installed "
   ];
+
+  const job2 = new Job("my-docker","amitsanu/brigadeimage1:latest");
+  job2.privileged = true;
+  job2.env = {
+    DOCKER_DRIVER: "overlay"
+  };
+  job2.tasks = [
+    // docker image pushing to gcp
+    "dockerd &",
+    "dockerd-entrypoint.sh &",
+    "gcloud auth configure-docker",
+    "docker version",
+    "docker images",
+    "docker build -t helloworld:latest",
+    "docker tag helloworld:latest gcr.io/vocal-raceway-299310/hello-world:v1",
+    "docker push gcr.io/vocal-raceway-299310/hello-world:v1",
+    "echo docker image pushed"
+  ];
+//   jobs.run();
   job.run();
   jobs.run();
+  j0b2.run();
 });
 
 // const jobs = new Job("my-docker","nxvishal/platform_new:latest");
