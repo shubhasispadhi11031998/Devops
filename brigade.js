@@ -2,7 +2,6 @@ const { events, Job, Group } = require("brigadier");
 events.on("push", async (e, project) => {
   var job = new Job("my-firstjob", "amitsanu/brigimagef:latest");
   job.priviliged = true;
-  const project_id = project.secrets.project_id;
   let keyval = {
     type: project.secrets.type,
     project_id: project.secrets.project_id,
@@ -37,16 +36,22 @@ events.on("push", async (e, project) => {
       DOCKER_DRIVER: "overlay"
       };
     jobs.tasks = [
+    "gcloud version",
+    "echo $key > key.json",
+    "cat key.json",
+    "gcloud auth activate-service-account --key-file=key.json",
+    "gcloud config set project vocal-raceway-299310",
+    "echo auth gcloud done",
     // helm authentication
     `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
     "gcloud components install kubectl",
-    "echo cluster successful",
+    "echo cluster done setup",
     "helm version",
     "helm install my-chart/",
     "echo helm installed "
   ];
 
-  // const job2 = new Job("my-docker","amitsanu/brigadeimage1:latest");
+  // const job2 = new Job("my-docker","docker:dind");
   // job2.privileged = true;
   // job2.env = {
   //   DOCKER_DRIVER: "overlay"
