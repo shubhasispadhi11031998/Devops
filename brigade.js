@@ -41,11 +41,12 @@ events.on("push", async (e, project) => {
     "echo helm installed "
     ];
     
-  const lint = new Job("my-lint","amitsanu/brigimagef:latest");
+  const lint = new Job("my-lint","amitsanu/brigimage1:latest");
     lint.privileged = true;
     lint.tasks = [
       "cd /src",
       "npm i",
+      "helm lint",
       "echo lint done sucessfully"
   ];
 
