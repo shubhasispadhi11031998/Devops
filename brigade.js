@@ -44,6 +44,7 @@ events.on("push", async (e, project) => {
   const lint = new Job("my-lint","amitsanu/brigimagef:latest");
     lint.privileged = true;
     lint.tasks = [
+      "cd /src",
       "npm i",
       "npm run lint",
       "echo lint done sucessfully"
