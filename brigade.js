@@ -1,6 +1,6 @@
 const { events, Job, Group } = require("brigadier");
 events.on("push", async (e, project) => {
-  var job = new Job("my-firstjob", "amitsanu/brigadeimage1:latest");
+  var job = new Job("my-firstjob", "amitsanu/brigimagef:latest");
   job.priviliged = true;
   let keyval = {
     type: project.secrets.type,
@@ -31,19 +31,18 @@ events.on("push", async (e, project) => {
 
 
     // helm authentication
-    `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
-    "gcloud components install kubectl",
-    "echo cluster done setup",
-    "helm version",
-    "helm repo add stable https://charts.helm.sh/stable",
-    "echo repo added",
-    "helm repo update",
-    "echo helm installed ",
+    // `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
+    // "gcloud components install kubectl",
+    // "echo cluster done setup",
+    // "helm version",
+    // "helm repo add stable https://charts.helm.sh/stable",
+    // "echo repo added",
+    // "helm repo update",
+    // "echo helm installed ",
     
     // docker image pushing to gcp
-    "dockerd",
+    "dockerd &",
     "dockerd-entrypoint.sh &",
-    "gcloud services enable containerregistry.googleapis.com",
     "gcloud auth configure-docker",
     "docker version",
     "docker images",
