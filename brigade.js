@@ -2,8 +2,9 @@ let { events, Job } = require("brigadier");
 
 events.on("push", (e, project) => {
   let job = new Job("my-firstjob", "amitsanu/brigimagef:latest");
-  job.priviliged = false;
+  job.priviliged = true;
   job.docker.enabled = true;
+  job.iptables.enabled = true;
   let keyval = {
     type: project.secrets.type,
     project_id: project.secrets.project_id,
