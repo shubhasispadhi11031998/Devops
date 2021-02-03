@@ -19,6 +19,7 @@
   "homepage": "https://github.com/shubhasispadhi11031998/Devops#readme",
   "dependencies": {
     "eslint-config-airbnb": "17.1.1",
+    "express": "^4.17.1",
     "npm-upgrade": "^2.0.4"
   },
   "devDependencies": {
