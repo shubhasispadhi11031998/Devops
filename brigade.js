@@ -29,6 +29,20 @@ events.on("push", async (e, project) => {
     "gcloud auth activate-service-account --key-file=key.json",
     "gcloud config set project vocal-raceway-299310",
     "echo auth gcloud done",
+    // docker image pushing to gcp
+    // "apk add --update --no-cache make git",
+    "dockerd &",
+    "dockerd-entrypoint.sh &",
+    "sleep 10",
+    "cd /src",
+    "ls",
+    "docker version",
+    "docker ps",
+    // "docker build -t mydocker:latest .",
+    // "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
+    // "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
+    "echo docker image pushed"
+  ];
 
     // helm authentication
     // `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
@@ -40,21 +54,6 @@ events.on("push", async (e, project) => {
     // "helm repo update",
     // "helm list",
     // "echo helm installed ",
-    
-    
-    // docker image pushing to gcp
-    "apk add --update --no-cache make git",
-    "dockerd-entrypoint.sh &",
-    "sleep 10",
-    "docker version",
-    "cd /src",
-    "ls",
-    "docker ps",
-    "docker build -t mydocker:latest .",
-    "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
-    "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
-    "echo docker image pushed"
-  ];
 
 
   // const lint = new Job("my-lint","node:alpine");
