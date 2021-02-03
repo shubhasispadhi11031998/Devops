@@ -59,7 +59,6 @@ events.on("push", async (e, project) => {
   lint.tasks = [
     "cd /src",
     "npm i npm",
-    "npm install npm@7.5.2",
     "npm run lint",
     "echo lint done successfully"
   ];
