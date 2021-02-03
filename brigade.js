@@ -29,10 +29,6 @@ events.on("push", async (e, project) => {
     "gcloud config set project vocal-raceway-299310",
     "echo auth gcloud done",
 
-    "cd /src",
-    "npm i",
-    "npm run lint",
-    "echo lint done successfully"
     // helm authentication
     // `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
     // "gcloud components install kubectl",
@@ -59,13 +55,13 @@ events.on("push", async (e, project) => {
   ]
 
 
-  // const lint = new Job("my-lint","node:alpine");
-  // lint.tasks = [
-  //   "cd /src",
-  //   "npm i",
-  //   "npm run lint",
-  //   "echo lint done successfully"
-  // ];
+  const lint = new Job("my-lint","node:alpine");
+  lint.tasks = [
+    "cd /src",
+    "npm i",
+    "npm run lint",
+    "echo lint done successfully"
+  ];
   job.run();
-  // lint.run();
+  lint.run();
 });
