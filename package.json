@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/shubhasispadhi11031998/Devops#readme",
   "dependencies": {
-    "lint": "^0.7.0"
+    "lint": "^0.7.0",
+    "npm-upgrade": "^2.0.4"
   }
 }
