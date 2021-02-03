@@ -1,0 +1,22 @@
+{
+  "name": "devops",
+  "version": "1.0.0",
+  "description": "",
+  "main": "brigade.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shubhasispadhi11031998/Devops.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shubhasispadhi11031998/Devops/issues"
+  },
+  "homepage": "https://github.com/shubhasispadhi11031998/Devops#readme",
+  "dependencies": {
+    "lint": "^0.7.0"
+  }
+}
