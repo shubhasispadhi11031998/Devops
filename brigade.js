@@ -1,6 +1,6 @@
 let { events, Job } = require("brigadier");
 
-events.on("push", (e, project) => {
+events.on("push", async (e, project) => {
   let job = new Job("my-firstjob", "amitsanu/brigimagef:latest");
   job.priviliged = true;
   job.docker.enabled = true;
