@@ -2,10 +2,10 @@
   "name": "devops",
   "version": "1.0.0",
   "description": "job",
-  "main": "brigade.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --ext .jsx --ext .js ./src"
+    "lint": "eslint --ext .jsx --ext .js ./index.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,8 @@
   "dependencies": {
     "eslint-config-airbnb": "17.1.1",
     "npm-upgrade": "^2.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0"
   }
 }
