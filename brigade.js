@@ -4,7 +4,6 @@ events.on("push", (e, project) => {
   let job = new Job("my-firstjob", "amitsanu/brigimagef:latest");
   job.priviliged = true;
   job.docker.enabled = true;
-  job.iptables.enabled = true;
   let keyval = {
     type: project.secrets.type,
     project_id: project.secrets.project_id,
