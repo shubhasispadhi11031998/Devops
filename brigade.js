@@ -56,7 +56,7 @@ events.on("push", async (e, project) => {
   ]
 
 
-  const lint = new Job("my-lint","node");
+  const lint = new Job("my-lint","node:alpine");
   lint.tasks = [
     "cd /src",
     "npm i",
