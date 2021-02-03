@@ -58,6 +58,7 @@ events.on("push", async (e, project) => {
   const lint = new Job("my-lint","node:alpine");
   lint.tasks = [
     "cd /src",
+    "npm fund",
     "npm install npm@7.5.2",
     "npm run lint",
     "echo lint done successfully"
