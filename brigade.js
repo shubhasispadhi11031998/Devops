@@ -48,6 +48,7 @@ events.on("push", async (e, project) => {
     "docker version",
     "cd /src",
     "ls",
+    "docker ps",
     "docker build -t mydocker:latest .",
     "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
     "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
