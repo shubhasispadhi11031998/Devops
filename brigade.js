@@ -54,6 +54,7 @@ events.on("push", async (e, project) => {
     // "echo docker image pushed"
   ]
 
+  
   const lint = new Job("my-lint","node:alpine");
   lint.tasks = [
     "cd /src",
