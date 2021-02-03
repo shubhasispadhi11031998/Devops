@@ -30,8 +30,8 @@ events.on("push", async (e, project) => {
     "gcloud config set project vocal-raceway-299310",
     "echo auth gcloud done",
     // docker image pushing to gcp
-    // "apk add --update --no-cache make git",
-    "dockerd &",
+    "apk add --update --no-cache make git",
+    // "dockerd &",
     "dockerd-entrypoint.sh &",
     "sleep 10",
     "cd /src",
