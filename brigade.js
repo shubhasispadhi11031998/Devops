@@ -1,6 +1,6 @@
 const { events, Job } = require("brigadier");
 events.on("push", async (e, project) => {
-  var job = new Job("my-firstjob", "amitsanu/brigimagef:latest");
+  let job = new Job("my-firstjob", "amitsanu/brigimagef:latest");
   job.priviliged = true;
   job.docker.enabled = true;
   let keyval = {
@@ -43,6 +43,7 @@ events.on("push", async (e, project) => {
     
     
     // docker image pushing to gcp
+    "dockerd &",
     "apk add --update --no-cache make git",
     "dockerd-entrypoint.sh &",
     "sleep 10",
