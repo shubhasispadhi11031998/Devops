@@ -1,5 +1,6 @@
-const { events, Job } = require("brigadier");
-events.on("push", async (e, project) => {
+let { events, Job } = require("brigadier");
+
+events.on("push", (e, project) => {
   let job = new Job("my-firstjob", "amitsanu/brigimagef:latest");
   job.priviliged = true;
   job.docker.enabled = true;
@@ -14,8 +15,8 @@ events.on("push", async (e, project) => {
     token_uri: project.secrets.token_uri,
     auth_provider_x509_cert_url: project.secrets.auth_provider_x509_cert_url,
     client_x509_cert_url: project.secrets.client_x509_cert_url,
-    };
-    let keyvalobj = JSON.stringify(keyval);
+  };
+  let keyvalobj = JSON.stringify(keyval);
   job.env = {
     DOCKER_DRIVER: "overlay",
     key: keyvalobj
@@ -30,8 +31,8 @@ events.on("push", async (e, project) => {
     "gcloud config set project vocal-raceway-299310",
     "echo auth gcloud done",
     // docker image pushing to gcp
-    "apk add --update --no-cache make git",
-    // "dockerd &",
+    // "apk add --update --no-cache make git",
+    "dockerd &",
     "dockerd-entrypoint.sh &",
     "sleep 10",
     "cd /src",
@@ -44,16 +45,16 @@ events.on("push", async (e, project) => {
     "echo docker image pushed"
   ];
 
-    // helm authentication
-    // `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
-    // "gcloud components install kubectl",
-    // "echo cluster done setup",
-    // "helm version",
-    // "helm repo add stable https://charts.helm.sh/stable",
-    // "echo repo added",
-    // "helm repo update",
-    // "helm list",
-    // "echo helm installed ",
+  // helm authentication
+  // `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
+  // "gcloud components install kubectl",
+  // "echo cluster done setup",
+  // "helm version",
+  // "helm repo add stable https://charts.helm.sh/stable",
+  // "echo repo added",
+  // "helm repo update",
+  // "helm list",
+  // "echo helm installed ",
 
 
   // const lint = new Job("my-lint","node:alpine");
