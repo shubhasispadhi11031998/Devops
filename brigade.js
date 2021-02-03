@@ -56,5 +56,4 @@ events.on("push", async (e, project) => {
   ];
 
   job.run();
-  // lint.run();
 });
