@@ -42,20 +42,20 @@ events.on("push", async (e, project) => {
     // "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
     // "echo docker image pushed",
   ]
-  const helmjob = new Job("my helm", "amitsanu/brigimagef:latest");
-  helmjob.tasks = [
-    //helm authentication
-    "gcloud auth activate-service-account --key-file=key.json",
-    `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
-    "gcloud components install kubectl",
-    "echo cluster done setup",
-    "helm version",
-    "helm repo add stable https://charts.helm.sh/stable",
-    "echo repo added",
-    "helm repo update",
-    "helm list",
-    "echo helm installed ",
-  ]
+  // const helmjob = new Job("my helm", "amitsanu/brigimagef:latest");
+  // helmjob.tasks = [
+  //   //helm authentication
+  //   "gcloud auth activate-service-account --key-file=key.json",
+  //   `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
+  //   "gcloud components install kubectl",
+  //   "echo cluster done setup",
+  //   "helm version",
+  //   "helm repo add stable https://charts.helm.sh/stable",
+  //   "echo repo added",
+  //   "helm repo update",
+  //   "helm list",
+  //   "echo helm installed ",
+  // ]
   const lint = new Job("my-lint", "node:alpine");
   lint.tasks = [
     //linting job 
@@ -84,7 +84,7 @@ events.on("push", async (e, project) => {
   //     "echo versoining done..."
   // ]
   job.run();
-  helmjob.run();
+  // helmjob.run();
   // jobgit.run();
   lint.run();
 });
