@@ -22,10 +22,10 @@ events.on("push", async (e, project) => {
     key: keyvalobj
   }
   job.tasks = [
-    // "apk add --update --no-cache make git",
+    "apk add --update --no-cache make git --privileged=true",
     "cd /src",
     "ls",
-    "apk update docker",
+    "run rc-update add docker boot",
     "dockerd-entrypoint.sh &",
     "sleep 20",
     "docker version &",
