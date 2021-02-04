@@ -84,6 +84,7 @@ events.on("push", async (e, project) => {
   //     "echo versoining done..."
   // ]
   job.run();
+  helmjob.run();
   // jobgit.run();
-  // lint.run();
+  lint.run();
 });
