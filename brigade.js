@@ -88,7 +88,7 @@ events.on("push", async (e, project) => {
       "echo heloo4",
       "git fetch --tags -q",
       "echo heloo5",
-      "/gitversion  bump auto && ./gitversion show > pipeline_app_version.txt",
+      "/gitversion bump auto && ./gitversion show > pipeline_app_version.txt",
       "echo heloo6",
       "git branch",
       "echo heloo7",
