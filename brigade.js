@@ -74,6 +74,7 @@ events.on("push", async (e, project) => {
   let jobgit = new Job("my-gittask","amitsanu/brigimagef:latest") ;
     jobgit.tasks = [
       "cd /src",
+      "git version",
       "echo https://shubhasispadhi11031998:shubhasis11@github.com",
       "git config credential.helper 'store --file .git-credentials'",
       "git remote add origin https://github.com/shubhasispadhi11031998/Devops.git",
