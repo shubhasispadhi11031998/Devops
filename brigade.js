@@ -23,9 +23,10 @@ events.on("push", async (e, project) => {
   }
   job.tasks = [
     // "apk add --update --no-cache make git",
+    "cd /src",
+    "ls",
     "dockerd-entrypoint.sh &",
     "sleep 20",
-    "cd /src",
     "docker version &",
     "docker ps",
     "docker build -f Dockerfile -t nodedoc:v2 .",
