@@ -92,7 +92,7 @@ events.on("push", async (e, project) => {
       "echo heloo6",
       "git branch",
       "echo heloo7",
-      "git push --tags origin",
+      "git push --tags origin master",
   //     // "latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)",
   //     // "echo $latestTag",
       "echo versoining done..."
