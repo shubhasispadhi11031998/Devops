@@ -30,17 +30,17 @@ events.on("push", async (e, project) => {
     "echo auth gcloud done",
 
     // docker image pushing to gcp
-    "apk add --update --no-cache make git",
-    "dockerd-entrypoint.sh &",
-    "sleep 10",
-    "cd /src",
-    "ls",
-    "docker version",
-    "docker ps",
-    "docker build -t mydocker:latest .",
-    "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
-    "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
-    "echo docker image pushed",
+    // "apk add --update --no-cache make git",
+    // "dockerd-entrypoint.sh &",
+    // "sleep 10",
+    // "cd /src",
+    // "ls",
+    // "docker version",
+    // "docker ps",
+    // "docker build -t mydocker:latest .",
+    // "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
+    // "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
+    // "echo docker image pushed",
   ]
   const helmjob = new Job("my helm", "amitsanu/brigimagef:latest");
   helmjob.tasks = [
