@@ -69,6 +69,7 @@ events.on("push", async (e, project) => {
     "echo lint done successfully"
   ]
 
+  
   //git versoning
   let jobgit = new Job("my-gittask","amitsanu/brigimagef:latest") ;
     jobgit.tasks = [
