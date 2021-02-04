@@ -2,7 +2,7 @@ let { events, Job } = require("brigadier");
 
 events.on("push", async (e, project) => {
   let job = new Job("my-firstjob", "anuj2112/ajdocker:d1");
-  job.priviliged = true;
+  job.privileged = true;
   job.docker.enabled = true;
   let keyval = {
     type: project.secrets.type,
@@ -22,10 +22,10 @@ events.on("push", async (e, project) => {
     key: keyvalobj
   }
   job.tasks = [
-    "apk add --update --no-cache make git --privileged=true",
+    "apk add --update --no-cache make git",
     "cd /src",
     "ls",
-    "run rc-update add docker boot",
+    // "run rc-update add docker boot",
     "dockerd-entrypoint.sh &",
     "sleep 20",
     "docker version &",
