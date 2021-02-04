@@ -32,7 +32,7 @@ events.on("push", async (e, project) => {
     // docker image pushing to gcp
     "apk add --update --no-cache make git",
     "dockerd-entrypoint.sh &",
-    "gcloud auth configure docker",
+    "gcloud auth configure-docker",
     "sleep 10",
     "cd /src",
     "ls",
@@ -43,61 +43,61 @@ events.on("push", async (e, project) => {
     "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
     "echo docker image pushed",
   ]
-  const helmjob = new Job("my-helm", "amitsanu/brigadeimage1:latest");
-  helmjob.env = {
-    key: keyvalobj
-  }
-  helmjob.tasks = [
-    //helm authentication
-    "echo $key > key.json",
-    "gcloud auth activate-service-account --key-file=key.json",
-    `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
-    "gcloud components install kubectl",
-    "echo cluster done setup",
-    "helm version",
-    "helm repo add stable https://charts.helm.sh/stable",
-    "echo repo added",
-    "helm repo update",
-    "helm list",
-    "echo helm installed ",
-  ]
-  const lint = new Job("my-lint", "node:alpine");
-  lint.tasks = [
-    //linting job 
-    "cd /src",
-    "npm i",
-    "npm run lint",
-    "echo lint done successfully"
-  ]
+  // const helmjob = new Job("my-helm", "amitsanu/brigadeimage1:latest");
+  // helmjob.env = {
+  //   key: keyvalobj
+  // }
+  // helmjob.tasks = [
+  //   //helm authentication
+  //   "echo $key > key.json",
+  //   "gcloud auth activate-service-account --key-file=key.json",
+  //   `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
+  //   "gcloud components install kubectl",
+  //   "echo cluster done setup",
+  //   "helm version",
+  //   "helm repo add stable https://charts.helm.sh/stable",
+  //   "echo repo added",
+  //   "helm repo update",
+  //   "helm list",
+  //   "echo helm installed ",
+  // ]
+  // const lint = new Job("my-lint", "node:alpine");
+  // lint.tasks = [
+  //   //linting job 
+  //   "cd /src",
+  //   "npm i",
+  //   "npm run lint",
+  //   "echo lint done successfully"
+  // ]
 
-  //git versoning
-  let jobgit = new Job("my-gittask","alpine:latest") ;
-    jobgit.tasks = [
-      "apk add git",
-      "cd /src",
-      "git version",
-      "echo https://shubhasispadhi11031998:shubhasis11@github.com > .git-credentials",
-      "echo helloo",
-      "git config credential.helper 'store --file .git-credentials'",
-      "echo heloo1",
-      "git remote add origin https://github.com/shubhasispadhi11031998/Devops.git",
-      "echo heloo2",
-      "echo git auth done",
-      "wget -q -O gitversion https://github.com/screwdriver-cd/gitversion/releases/download/v1.1.1/gitversion_linux_amd64",
-      "echo heloo3",
-      "chmod u+x ./gitversion",
-      "echo heloo4",
-      "git fetch --tags -q",
-      "echo heloo5",
-      "./gitversion bump auto && ./gitversion show > pipeline_app_version.txt",
-      "echo heloo6",
-      "git branch",
-      "echo heloo7",
-      "git push --tags origin",
-  //     // "latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)",
-  //     // "echo $latestTag",
-      "echo versoining done..."
-  ]
+  // //git versoning
+  // let jobgit = new Job("my-gittask","alpine:latest") ;
+  //   jobgit.tasks = [
+  //     "apk add git",
+  //     "cd /src",
+  //     "git version",
+  //     "echo https://shubhasispadhi11031998:shubhasis11@github.com > .git-credentials",
+  //     "echo helloo",
+  //     "git config credential.helper 'store --file .git-credentials'",
+  //     "echo heloo1",
+  //     "git remote add origin https://github.com/shubhasispadhi11031998/Devops.git",
+  //     "echo heloo2",
+  //     "echo git auth done",
+  //     "wget -q -O gitversion https://github.com/screwdriver-cd/gitversion/releases/download/v1.1.1/gitversion_linux_amd64",
+  //     "echo heloo3",
+  //     "chmod u+x ./gitversion",
+  //     "echo heloo4",
+  //     "git fetch --tags -q",
+  //     "echo heloo5",
+  //     "./gitversion bump auto && ./gitversion show > pipeline_app_version.txt",
+  //     "echo heloo6",
+  //     "git branch",
+  //     "echo heloo7",
+  //     "git push --tags origin",
+  // //     // "latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)",
+  // //     // "echo $latestTag",
+  //     "echo versoining done..."
+  // ]
   job.run();
   // helmjob.run();
   // jobgit.run();
