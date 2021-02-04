@@ -32,10 +32,10 @@ events.on("push", async (e, project) => {
     // "echo auth gcloud done",
 
     // docker image pushing to gcp
-    "echo now auth",
-    "echo $key > key.json",
-    "gcloud auth activate-service-account --key-file=key.json",
-    "echo auth gcloud done",
+    // "echo now auth",
+    // "echo $key > key.json",
+    // "gcloud auth activate-service-account --key-file=key.json",
+    // "echo auth gcloud done",
     "apk add --update --no-cache make git",
     "dockerd-entrypoint.sh &",
     "sleep 10",
