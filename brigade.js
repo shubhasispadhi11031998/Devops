@@ -70,11 +70,12 @@ events.on("push", async (e, project) => {
   ]
 
   //git versoning
-  let jobgit = new Job("my-gittask","amitsanu/brigimagef:latest") ;
+  let jobgit = new Job("my-gittask","alpine:latest") ;
     jobgit.tasks = [
+      "apk add git",
       "cd /src",
       "git version",
-      "echo https://shubhasispadhi11031998:shubhasis11@github.com",
+      "echo https://shubhasispadhi11031998:shubhasis11@github.com > .git-credentials",
       "echo helloo",
       "git config credential.helper 'store --file .git-credentials'",
       "echo heloo1",
