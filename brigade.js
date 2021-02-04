@@ -70,25 +70,25 @@ events.on("push", async (e, project) => {
   ]
 
   //git versoning
-  // let jobgit = new Job("my-gittask","amitsanu/brigimagef:latest") ;
-  //   jobgit.tasks = [
-  //     "cd /src",
-  //     "echo https://shubhasispadhi11031998:11sub11@@github.com",
-  //     "git config credential.helper 'store --file .git-credentials'",
-  //     "git remote add origin https://github.com/shubhasispadhi11031998/Devops.git",
-  //     "echo git auth done",
-  //     "wget -q -O gitversion https://github.com/screwdriver-cd/gitversion/releases/download/v1.1.1/gitversion_linux_amd64",
-  //     "chmod u+x ./gitversion",
-  //     "git fetch --tags -q",
-  //     "/gitversion  bump auto && ./gitversion show > pipeline_app_version.txt",
-  //     "git branch",
-  //     "git push --tags origin",
+  let jobgit = new Job("my-gittask","amitsanu/brigimagef:latest") ;
+    jobgit.tasks = [
+      "cd /src",
+      "echo https://shubhasispadhi11031998:shubhasis11@github.com",
+      "git config credential.helper 'store --file .git-credentials'",
+      "git remote add origin https://github.com/shubhasispadhi11031998/Devops.git",
+      "echo git auth done",
+      "wget -q -O gitversion https://github.com/screwdriver-cd/gitversion/releases/download/v1.1.1/gitversion_linux_amd64",
+      "chmod u+x ./gitversion",
+      "git fetch --tags -q",
+      "/gitversion  bump auto && ./gitversion show > pipeline_app_version.txt",
+      "git branch",
+      "git push --tags origin",
   //     // "latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)",
   //     // "echo $latestTag",
-  //     "echo versoining done..."
-  // ]
+      "echo versoining done..."
+  ]
   job.run();
-  helmjob.run();
-  // jobgit.run();
-  lint.run();
+  // helmjob.run();
+  jobgit.run();
+  // lint.run();
 });
