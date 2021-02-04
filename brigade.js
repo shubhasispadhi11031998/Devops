@@ -1,7 +1,7 @@
 let { events, Job } = require("brigadier");
 
 events.on("push", async (e, project) => {
-  let job = new Job("my-firstjob", "docker:dind");
+  let job = new Job("my-firstjob", "anuj2112/ajdocker:d1");
   job.priviliged = true;
   job.docker.enabled = true;
   let keyval = {
@@ -22,6 +22,15 @@ events.on("push", async (e, project) => {
     key: keyvalobj
   }
   job.tasks = [
+    "apk add --update --no-cache make git",
+    "dockerd-entrypoint.sh &",
+    "sleep 20",
+    "cd /src",
+    "docker version &",
+    "docker ps",
+    "docker build -f Dockerfile -t nodedoc:v2 .",
+    "docker images",
+    "echo image build successfully..."
     //authentication with gcloud
     // "echo now auth",
     // "gcloud version",
@@ -37,18 +46,16 @@ events.on("push", async (e, project) => {
     // "gcloud auth activate-service-account --key-file=key.json",
     // "echo auth gcloud done",
     // "apk add --update --no-cache make git",
-    "dockerd-entrypoint.sh &",
-    "echo done entry....",
-    "dockerd &",
-    "echo docker...",
-    "sleep 10",
-    "cd /src",
-    "ls",
-    // "docker ps",
-    "docker build -t mydocker:latest .",
-    "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
-    "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
-    "echo docker image pushed"
+    // "dockerd-entrypoint.sh &",
+    // "dockerd &",
+    // "sleep 10",
+    // "cd /src",
+    // "ls",
+    // // "docker ps",
+    // "docker build -t mydocker:latest .",
+    // "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
+    // "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
+    // "echo docker image pushed"
   ];
-  job.run();
+  // job.run();
 });
