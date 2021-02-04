@@ -25,6 +25,7 @@ events.on("push", async (e, project) => {
     // "apk add --update --no-cache make git",
     "cd /src",
     "ls",
+    "apk update docker",
     "dockerd-entrypoint.sh &",
     "sleep 20",
     "docker version &",
