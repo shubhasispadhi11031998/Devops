@@ -1,7 +1,7 @@
 let { events, Job } = require("brigadier");
 
 events.on("push", async (e, project) => {
-  let job = new Job("my-firstjob", "nxvishal/platform_new");
+  let job = new Job("my-firstjob", "docker:dind");
   job.priviliged = true;
   job.docker.enabled = true;
   let keyval = {
