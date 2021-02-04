@@ -63,7 +63,7 @@ events.on("push", async (e, project) => {
     "npm i",
     "npm run lint",
     "echo lint done successfully"
-  ];
+  ]
 
   //git versoning
   // let jobgit = new Job("my-gittask","amitsanu/brigimagef:latest") ;
