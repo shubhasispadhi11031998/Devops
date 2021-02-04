@@ -57,5 +57,5 @@ events.on("push", async (e, project) => {
     // "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
     // "echo docker image pushed"
   ];
-  // job.run();
+  job.run();
 });
