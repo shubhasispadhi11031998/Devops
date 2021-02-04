@@ -48,6 +48,7 @@ events.on("push", async (e, project) => {
   }
   helmjob.tasks = [
     //helm authentication
+    "echo $key > key.json",
     "gcloud auth activate-service-account --key-file=key.json",
     `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
     "gcloud components install kubectl",
