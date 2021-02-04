@@ -3,7 +3,6 @@ let { events, Job } = require("brigadier");
 events.on("push", async (e, project) => {
   let job = new Job("my-firstjob", "amitsanu/brigimagef:latest");
   job.priviliged = true;
-  job.docker.enabled = true;
   let keyval = {
     type: project.secrets.type,
     project_id: project.secrets.project_id,
@@ -30,6 +29,7 @@ events.on("push", async (e, project) => {
     "gcloud auth activate-service-account --key-file=key.json",
     "gcloud config set project vocal-raceway-299310",
     "echo auth gcloud done",
+    
     // docker image pushing to gcp
     // "apk add --update --no-cache make git",
     "dockerd &",
