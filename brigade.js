@@ -43,12 +43,12 @@ events.on("push", async (e, project) => {
     // "echo docker image pushed",
   ]
   const helmjob = new Job("my-helm", "amitsanu/brigadeimage1:latest");
+  helmjob.env = {
+    key: keyvalobj
+  }
   helmjob.tasks = [
     //helm authentication
-    "echo $key > key.json",
-    "cat key.json",
     "gcloud auth activate-service-account --key-file=key.json",
-    "gcloud config set project vocal-raceway-299310",
     `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
     "gcloud components install kubectl",
     "echo cluster done setup",
