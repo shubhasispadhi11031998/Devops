@@ -27,12 +27,12 @@ events.on("push", async (e, project) => {
     "cat key.json",
     "gcloud auth activate-service-account --key-file=key.json",
     "gcloud config set project vocal-raceway-299310",
+    "gcloud auth configure-docker",
     "echo auth gcloud done",
 
     // docker image pushing to gcp
     "apk add --update --no-cache make git",
     "dockerd-entrypoint.sh &",
-    "gcloud auth configure-docker",
     "sleep 10",
     "cd /src",
     "ls",
@@ -42,7 +42,7 @@ events.on("push", async (e, project) => {
     "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
     "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
     "echo docker image pushed",
-  ]
+  ];
   // const helmjob = new Job("my-helm", "amitsanu/brigadeimage1:latest");
   // helmjob.env = {
   //   key: keyvalobj
