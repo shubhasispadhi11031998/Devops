@@ -1,5 +1,4 @@
 let { events, Job } = require("brigadier");
-
 events.on("push", async (e, project) => {
   let job = new Job("my-firstjob", "amitsanu/brigimagef:latest");
   job.privileged = true;
@@ -42,27 +41,28 @@ events.on("push", async (e, project) => {
     "docker tag mydocker:latest gcr.io/vocal-raceway-299310/mydocker:v1",
     "docker push gcr.io/vocal-raceway-299310/mydocker:v1",
     "echo docker image pushed",
-
-    
-    // //helm authentication
-    // `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
-    // "gcloud components install kubectl",
-    // "echo cluster done setup",
-    // "helm version",
-    // "helm repo add stable https://charts.helm.sh/stable",
-    // "echo repo added",
-    // "helm repo update",
-    // "helm list",
-    // "echo helm installed ",
   ]
-      //lint task
-    const lint = new Job("my-lint", "node:alpine");
-    lint.tasks = [
-     //linting job 
-       "cd /src",
-       "npm i",
-       "npm run lint",
-       "echo lint done successfully"
+  const helmjob = new Job("my helm", "amitsanu/brigimagef:latest");
+  helmjob.tasks = [
+    //helm authentication
+    "gcloud auth activate-service-account --key-file=key.json",
+    `gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project ${keyval.project_id}`,
+    "gcloud components install kubectl",
+    "echo cluster done setup",
+    "helm version",
+    "helm repo add stable https://charts.helm.sh/stable",
+    "echo repo added",
+    "helm repo update",
+    "helm list",
+    "echo helm installed ",
+  ]
+  const lint = new Job("my-lint", "node:alpine");
+  lint.tasks = [
+    //linting job 
+    "cd /src",
+    "npm i",
+    "npm run lint",
+    "echo lint done successfully"
   ];
 
   //git versoning
