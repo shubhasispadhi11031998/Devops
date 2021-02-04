@@ -69,12 +69,12 @@ events.on("push", async (e, project) => {
     "echo lint done successfully"
   ]
 
-  
+
   //git versoning
   let jobgit = new Job("my-gittask","amitsanu/brigimagef:latest") ;
     jobgit.tasks = [
       "cd /src",
-      "echo https://github.com/shubhasispadhi11031998:shubhasis11@github.com",
+      "echo https://shubhasispadhi11031998:shubhasis11@github.com",
       "git config credential.helper 'store --file .git-credentials'",
       "git remote add origin https://github.com/shubhasispadhi11031998/Devops.git",
       "echo git auth done",
